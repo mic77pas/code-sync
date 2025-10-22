@@ -5,8 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        for i in range(0, len(nums)):
-            for j in range(0, i):
-                if (nums[i] + nums[j] == target):
-                    return [i, j]
+        hashmap = {}
+        for i in range(len(nums)):
+            x = target - nums[i]
+            if x in hashmap:
+                return [i, hashmap[x]]
+            hashmap[nums[i]] = i
         return []
